@@ -1,0 +1,4 @@
+# This file has been modified to use an standard route
+GNU_INSTALL_ROOT := /opt/gcc-arm-none-eabi
+GNU_VERSION := 4.9.3
+GNU_PREFIX := arm-none-eabi
