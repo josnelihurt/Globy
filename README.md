@@ -6,6 +6,7 @@ This is an small example to use an nrf51822 and expose some characteristics.
 
  - make
  - docker
+ - qt creator
  - patience :P
 
 # Build 
