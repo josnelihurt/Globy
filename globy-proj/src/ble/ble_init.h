@@ -12,6 +12,7 @@
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(70, UNIT_1_25_MS)           /**< Maximum acceptable connection interval (0.65 second). */
 #define SLAVE_LATENCY                   0                                          /**< Slave latency. */
 #define CONN_SUP_TIMEOUT                MSEC_TO_UNITS(4000, UNIT_10_MS)            /**< Connection supervisory timeout (4 seconds). */
+#define COMPANY_ID                      0x0059
 
 extern void gatt_init(void);
 extern void ble_stack_init(void);
