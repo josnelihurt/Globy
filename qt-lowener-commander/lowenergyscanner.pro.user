@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.1, 2020-09-26T10:08:34. -->
+<!-- Written by QtCreator 4.13.1, 2020-10-20T14:18:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -325,8 +325,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/opt/qt-lowenergyscanner/lowenergyscanner.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/opt/qt-lowenergyscanner/lowenergyscanner.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">lowenergyscanner2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/code/Globy/qt-lowener-commander/lowenergyscanner.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/code/Globy/qt-lowener-commander/lowenergyscanner.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

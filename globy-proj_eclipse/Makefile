@@ -3,7 +3,7 @@ TARGETS          := nrf51822_xxac
 OUTPUT_DIRECTORY := _build
 OPENOCD_SCRIPTS_PATH  := C:/Users/josne/AppData/Roaming/xPacks/@xpack-dev-tools/openocd/0.10.0-14.3/.content/scripts/
 
-SDK_ROOT := /opt/nRF5_SDK_12/
+SDK_ROOT := c:/opt/nRF5_SDK_12
 PROJ_DIR := .
 
 $(OUTPUT_DIRECTORY)/nrf51822_xxac.out: \
