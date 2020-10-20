@@ -150,7 +150,7 @@ Rectangle {
             theListView.visible = true
         }
         onLedClick: {
-            device.sendLedsState();
+            device.sendCommand();
         }
     }
 

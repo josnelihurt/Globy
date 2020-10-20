@@ -60,6 +60,7 @@
 #include <QList>
 #include <QMetaEnum>
 #include <QTimer>
+#include <QThread>
 
 Device::Device()
 {
@@ -311,17 +312,49 @@ void Device::disconnectFromDevice()
         deviceDisconnected();
 }
 
-void Device::sendLedsState()
+enum class CharacteristicsName{
+    LedState,
+    TransferLen,
+    TransferValue,
+};
+std::map<QString,CharacteristicsName> CharacteristicsTable = {
+    {"00008080-1212-efde-1523-785feabcd123",CharacteristicsName::LedState},
+    {"00008081-1212-efde-1523-785feabcd123",CharacteristicsName::TransferLen},
+    {"00008082-1212-efde-1523-785feabcd123",CharacteristicsName::TransferValue},
+};
+
+void Device::sendCommand()
 {
     static uint8_t onOff = 0;
+    std::map<CharacteristicsName,CharacteristicInfo*> charHandlers;
+
     for(auto ch : m_characteristics){
         auto validChar = static_cast<CharacteristicInfo*>(ch);
-        qDebug()  << "char " <<  validChar->getUuid();
-        QByteArray value(1,onOff);
-        m_last_service->writeCharacteristic(validChar->getCharacteristic(),value);
 
+        auto it = CharacteristicsTable.find(validChar->getUuid());
+        if(it!= CharacteristicsTable.end()){
+            charHandlers[it->second] = validChar;
+        }
     }
-    onOff = (onOff == 1) ? 0 : 1;
+
+    QByteArray array1Val(1,1);
+#define DELAY_VAL 200
+    m_last_service->writeCharacteristic(charHandlers[CharacteristicsName::LedState]->getCharacteristic(),array1Val);
+    QThread::msleep(DELAY_VAL);
+    array1Val[0] = 64;
+    m_last_service->writeCharacteristic(charHandlers[CharacteristicsName::TransferLen]->getCharacteristic(),array1Val);
+    QThread::msleep(DELAY_VAL);
+    QByteArray array8Vals(8,0);
+    for(int i = 0; i < 8; i++){
+        for(int j=0;j<8;j++){
+            array8Vals[j] = i;
+        }
+        m_last_service->writeCharacteristic(charHandlers[CharacteristicsName::TransferValue]->getCharacteristic(),array8Vals);
+        QThread::msleep(DELAY_VAL);
+    }
+
+    array1Val[0] = 0;
+    m_last_service->writeCharacteristic(charHandlers[CharacteristicsName::LedState]->getCharacteristic(),array1Val);
 }
 
 void Device::deviceDisconnected()

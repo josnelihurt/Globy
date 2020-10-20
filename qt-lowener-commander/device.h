@@ -98,7 +98,7 @@ public slots:
 
     void connectToService(const QString &uuid);
     void disconnectFromDevice();
-    void sendLedsState();
+    void sendCommand();
 
 private slots:
     // QBluetoothDeviceDiscoveryAgent related
