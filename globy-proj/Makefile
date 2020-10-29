@@ -101,7 +101,7 @@ $(foreach target, $(TARGETS), $(call define_target, $(target)))
 
 flash: _build/nrf51822_xxaa.hex
 	@echo Flashing: $<
-	openocd -s $(OPENOCD_SCRIPTS_PATH) -f 'interface/stlink-v2.cfg' -f 'target/nrf51_stlink.tcl' \
+	openocd -s $(PROJ_DIR)/scripts -f 'interface/stlink-v2.cfg' -f 'target/nrf51_stlink.tcl' \
 	 -c 'init' -c 'reset halt' -c 'nrf51 mass_erase' -c 'sleep 500' \
 	 -c 'flash write_image $(SDK_ROOT)/components/softdevice/s130/hex/s130_nrf51_2.0.1_softdevice.hex 0x0'  \
 	 -c 'verify_image $(SDK_ROOT)/components/softdevice/s130/hex/s130_nrf51_2.0.1_softdevice.hex 0x0' \
