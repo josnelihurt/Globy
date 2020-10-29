@@ -1,8 +1,9 @@
 
-#include "ble_events.h"
-#include "../app/transfer_service.h"
-#include "../hal/power_managment.h"
+#include "ble/ble_events.h"
+#include "app/transfer_service.h"
+#include "hal/power_managment.h"
 #include "nordic_common.h"
+#include "settings.h"
 
 #include <ble_hci.h>
 #include <ble_conn_state.h>
@@ -33,12 +34,14 @@ static void on_ble_evt(ble_evt_t * p_ble_evt)
             err_code = bsp_indication_set(BSP_INDICATE_CONNECTED);
             APP_ERROR_CHECK(err_code);
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
+            led_on(LED0);
             break; // BLE_GAP_EVT_CONNECTED
 
         case BLE_GAP_EVT_DISCONNECTED:
             NRF_LOG_INFO("Disconnected, reason %d\r\n",
                           p_ble_evt->evt.gap_evt.params.disconnected.reason);
             m_conn_handle = BLE_CONN_HANDLE_INVALID;
+            led_off(LED0);
             break; // BLE_GAP_EVT_DISCONNECTED
 
         case BLE_GATTC_EVT_TIMEOUT:

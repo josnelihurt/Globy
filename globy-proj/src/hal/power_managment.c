@@ -1,5 +1,5 @@
 
-#include "power_managment.h"
+#include "hal/power_managment.h"
 #include <stdint.h>
 #include <bsp.h>
 #include <nrf_soc.h>

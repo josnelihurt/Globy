@@ -1,6 +1,6 @@
-#include "nrf_hal_fnc.h"
-#include "../app/transfer_service.h"
-#include "../ble/ble_events.h"
+#include "hal/nrf_hal_fnc.h"
+#include "app/transfer_service.h"
+#include "ble/ble_events.h"
 
 void assert_nrf_callback(uint16_t line_num, const uint8_t *p_file_name)
 {
@@ -101,17 +101,19 @@ void buttons_leds_init(bool *p_erase_bonds)
 
     *p_erase_bonds = (startup_event == BSP_EVENT_CLEAR_BONDING_DATA);
 
-    nrf_gpio_cfg_output(BN_LED_R);
-    nrf_gpio_cfg_output(BN_LED_G);
-    nrf_gpio_cfg_output(BN_LED_B);
+    nrf_gpio_cfg_output(LED0);
+    nrf_gpio_cfg_output(LED1);
+    nrf_gpio_cfg_output(LED2);
+    nrf_gpio_cfg_output(LED3);
+    nrf_gpio_cfg_output(LED4);
 }
 
 void led_on(int pin)
 {
-    nrf_gpio_pin_write(pin, LEDS_ACTIVE_STATE ? 1 : 0);
+    nrf_gpio_pin_write(pin, 1);
 }
 
 void led_off(int pin)
 {
-    nrf_gpio_pin_write(pin, LEDS_ACTIVE_STATE ? 0 : 1);
+    nrf_gpio_pin_write(pin, 0);
 }

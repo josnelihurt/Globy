@@ -1,5 +1,5 @@
-#include "ble_init.h"
-#include "ble_events.h"
+#include "ble/ble_init.h"
+#include "ble/ble_events.h"
 
 #include <stdint.h>
 #include <string.h>
